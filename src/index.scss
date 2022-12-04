@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", "Arimo", "Arial", "sans-serif";
+    background-color: rgb(224, 241, 241);
+
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
