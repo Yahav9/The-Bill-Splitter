@@ -2,27 +2,35 @@ import React, { useState } from "react";
 
 import ItemCollector from "./ItemCollector/ItemCollector";
 import NamesCollector from "./NamesCollector/NamesCollector"
+import Tip from "./Tip/Tip";
 
 function App() {
     const [phase, setPhase] = useState(1);
+
+    const nextClickHandler = () => {
+        setPhase(phase + 1);
+    }
 
     let renderedComponent;
 
     switch (phase) {
         case 1:
             renderedComponent = <ItemCollector
-                onNextClick={() => setPhase(phase + 1)}
+                onNextClick={nextClickHandler}
             />
             break;
 
         case 2:
             renderedComponent = <NamesCollector
-                onNextClick={() => setPhase(phase + 1)}
+                onNextClick={nextClickHandler}
             />
             break;
 
         case 3:
-            renderedComponent = <Tip />
+            renderedComponent = <Tip
+                onNextClick={nextClickHandler}
+            />
+            break;
 
         default:
             break;
