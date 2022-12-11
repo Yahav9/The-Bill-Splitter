@@ -16,8 +16,13 @@ function App() {
             break;
 
         case 2:
-            renderedComponent = <NamesCollector />
+            renderedComponent = <NamesCollector
+                onNextClick={() => setPhase(phase + 1)}
+            />
             break;
+
+        case 3:
+            renderedComponent = <Tip />
 
         default:
             break;
