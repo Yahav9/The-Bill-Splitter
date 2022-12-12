@@ -5,6 +5,7 @@ import ItemCollector from "./ItemCollector/ItemCollector";
 import NamesCollector from "./NamesCollector/NamesCollector"
 import Splitter from "./Splitter/Splitter";
 import Tip from "./Tip/Tip";
+import Header from "./shared/Header/Header";
 
 function App() {
     const [phase, setPhase] = useState(1);
@@ -49,9 +50,12 @@ function App() {
     }
 
     return (
-        <main>
-            {renderedComponent}
-        </main>
+        <>
+            <Header />
+            <main>
+                {renderedComponent}
+            </main>
+        </>
     )
 }
 
