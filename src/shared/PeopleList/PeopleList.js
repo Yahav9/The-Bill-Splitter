@@ -1,6 +1,6 @@
 import React from "react";
 
-import Person from "../Person/Person";
+import Person from "../../shared/Person/Person";
 
 function PeopleList(props) {
     return (

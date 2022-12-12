@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import Button from "../shared/Button/Button";
-import Item from "../ItemCollector/Item/Item";
-import PeopleList from "./PeopleList/PeopleList";
+import Item from "../shared/Item/Item";
+import PeopleList from "../shared/PeopleList/PeopleList";
 
 function Splitter(props) {
     const [items, setItems] = useState([]);

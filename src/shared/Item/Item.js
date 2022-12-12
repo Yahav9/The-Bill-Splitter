@@ -1,6 +1,6 @@
 import React from "react";
 
-import Card from '../../shared/Card/Card'
+import Card from '../Card/Card'
 
 function Item(props) {
     return (

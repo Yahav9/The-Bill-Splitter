@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Item from "../Item/Item";
+import Item from "../../shared/Item/Item";
 import ItemForm from "../ItemForm/ItemForm";
 import Card from "../../shared/Card/Card";
 import Button from "../../shared/Button/Button";
