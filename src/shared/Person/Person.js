@@ -11,6 +11,10 @@ function Person(props) {
                 <h2>
                     {props.name}
                 </h2>
+                {
+                    props.payment &&
+                    <h2>{props.payment.toFixed(2)}</h2>
+                }
             </Card>
         </li>
     )
