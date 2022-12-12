@@ -25,11 +25,14 @@ function ItemsList(props) {
         <ul>
             {
                 items.length > 0 && items.map(item => {
-                    return <Item
-                        key={item.index}
-                        name={item.name}
-                        price={item.price}
-                    />
+                    return (
+                        <li key={item.index}>
+                            <Item
+                                name={item.name}
+                                price={item.price}
+                            />
+                        </li>
+                    )
                 })
             }
             <li>
@@ -39,7 +42,10 @@ function ItemsList(props) {
                 </Card>
             </li>
             <ItemForm onAdd={createItem} />
-            <Button onClick={nextClickHandler}>Next</Button>
+            <Button
+                onClick={nextClickHandler}
+                disabled={items.length < 1}
+            >Next</Button>
         </ul>
     )
 }

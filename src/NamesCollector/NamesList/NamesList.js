@@ -29,7 +29,10 @@ function NamesList(props) {
                 })
             }
             <NameForm onAdd={createName} />
-            <Button onClick={nextClickHandler}>Next</Button>
+            <Button
+                onClick={nextClickHandler}
+                disabled={people.length < 2}
+            >Next</Button>
         </ul>
     )
 }

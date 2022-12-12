@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import Conclusion from "./Conclusion/Conclusion";
 
 import ItemCollector from "./ItemCollector/ItemCollector";
 import NamesCollector from "./NamesCollector/NamesCollector"
+import Splitter from "./Splitter/Splitter";
 import Tip from "./Tip/Tip";
 
 function App() {
@@ -32,17 +34,22 @@ function App() {
             />
             break;
 
+        case 4:
+            renderedComponent = <Splitter
+                onCalculateClick={nextClickHandler}
+            />
+            break;
+
+        case 5:
+            renderedComponent = <Conclusion />
+            break;
+
         default:
             break;
     }
 
     return (
         <main>
-            <h1
-                onClick={() => setPhase(phase + 1)}
-            >
-                your'e on phase {phase}
-            </h1>
             {renderedComponent}
         </main>
     )
