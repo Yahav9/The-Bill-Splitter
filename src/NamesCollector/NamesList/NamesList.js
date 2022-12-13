@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Name from "../Name/Name";
 import NameForm from "../NameForm/NameForm";
 import Button from "../../shared/Button/Button";
+import "./NamesList.scss";
 
 function NamesList(props) {
     const [people, setPeople] = useState([]);
@@ -19,7 +20,7 @@ function NamesList(props) {
     }
 
     return (
-        <ul>
+        <ul className="names-list">
             {
                 people.length > 0 && people.map(person => {
                     return <Name
@@ -30,6 +31,7 @@ function NamesList(props) {
             }
             <NameForm onAdd={createName} />
             <Button
+                className="next-button"
                 onClick={nextClickHandler}
                 disabled={people.length < 2}
             >Next</Button>

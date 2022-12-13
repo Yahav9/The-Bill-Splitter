@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import Button from "../../shared/Button/Button";
+import "./NameForm.scss";
 
 function ItemForm(props) {
     const [name, setName] = useState('');
@@ -15,7 +16,7 @@ function ItemForm(props) {
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className="name-form" onSubmit={submitHandler}>
             <input
                 type="text"
                 placeholder="Name"
@@ -27,7 +28,7 @@ function ItemForm(props) {
             <Button
                 disabled={name.length < 1}
             >
-                ADD
+                +
             </Button>
         </form>
     )

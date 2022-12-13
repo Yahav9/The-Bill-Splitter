@@ -6,7 +6,7 @@ import NamesList from "./NamesList/NamesList";
 function NamesCollector(props) {
     return (
         <div className="names-collector">
-            <h2>Who's Here?</h2>
+            <h1>Who's Here?</h1>
             <NamesList
                 onNextClick={props.onNextClick}
             />
