@@ -1,0 +1,27 @@
+.tip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 100%;
+
+    .input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 150%;
+    }
+    input {
+        font-size: 100%;
+        width: 50%;
+        border: 2px solid rgb(111, 151, 160);
+        border-radius: 5px;
+        box-shadow: 0 0 2px rgb(123, 166, 213);
+        text-align: center;
+        margin: 5px;
+    }
+
+    button {
+        margin: 0;
+    }
+}

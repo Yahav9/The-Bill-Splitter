@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Button from "../shared/Button/Button";
+import './Tip.scss';
 
 function Tip(props) {
     const [percentage, setPercentage] = useState(10);
@@ -12,14 +13,17 @@ function Tip(props) {
     }
 
     return (
-        <form onSubmit={submitHandler}>
-            <h2>How much tip do you wanna give?</h2>
-            <input
-                type="number"
-                autoFocus
-                value={percentage}
-                onChange={event => setPercentage(event.target.value)}
-            /> %
+        <form className="tip" onSubmit={submitHandler}>
+            <h1>Tip?</h1>
+            <div className="input">
+                <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    autoFocus
+                    value={percentage}
+                    onChange={event => setPercentage(event.target.value)}
+                /> %</div>
             <Button>Next</Button>
         </form>
     )
