@@ -1,4 +1,10 @@
 .item-collector {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    font-size: 100%;
+
+    h2 {
+        font-size: 130%;
+    }
 }

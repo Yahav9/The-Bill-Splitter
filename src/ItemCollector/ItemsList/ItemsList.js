@@ -4,6 +4,7 @@ import Item from "../../shared/Item/Item";
 import ItemForm from "../ItemForm/ItemForm";
 import Card from "../../shared/Card/Card";
 import Button from "../../shared/Button/Button";
+import "./ItemsList.scss";
 
 function ItemsList(props) {
     const [items, setItems] = useState([]);
@@ -22,7 +23,7 @@ function ItemsList(props) {
     }
 
     return (
-        <ul>
+        <ul className="items-list">
             {
                 items.length > 0 && items.map(item => {
                     return (
@@ -36,16 +37,17 @@ function ItemsList(props) {
                 })
             }
             <li>
-                <Card>
-                    <h2>Total: </h2>
-                    <h2>{items.reduce((a, b) => Number(a) + Number(b.price), 0).toFixed(2)}</h2>
+                <Card className="item total">
+                    <h3>Total: </h3>
+                    <h3>{items.reduce((a, b) => Number(a) + Number(b.price), 0).toFixed(2)}₪</h3>
                 </Card>
             </li>
             <ItemForm onAdd={createItem} />
             <Button
+                className="next-button"
                 onClick={nextClickHandler}
                 disabled={items.length < 1}
-            >Next</Button>
+            >NEXT</Button>
         </ul>
     )
 }

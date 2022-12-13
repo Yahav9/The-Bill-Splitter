@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import Button from "../../shared/Button/Button";
+import "./ItemForm.scss";
 
 function ItemForm(props) {
     const [name, setName] = useState('');
@@ -17,7 +18,7 @@ function ItemForm(props) {
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className="item-form" onSubmit={submitHandler}>
             <input
                 type="text"
                 placeholder="Item (optional)"
@@ -25,6 +26,7 @@ function ItemForm(props) {
                 onChange={event => setName(event.target.value)}
             />
             <input
+                className="price"
                 type="number"
                 placeholder="Price"
                 autoFocus
@@ -37,7 +39,7 @@ function ItemForm(props) {
 
                 disabled={price <= 0}
             >
-                ADD
+                +
             </Button>
         </form>
     )
