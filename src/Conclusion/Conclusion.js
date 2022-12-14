@@ -12,7 +12,7 @@ function Conclusion() {
 
     return (
         <div className="conclusion">
-            <h1>Come Again</h1>
+            <h1>Come Again!</h1>
             <PeopleList
                 people={people}
                 total={people.reduce((a, b) => Number(a) + Number(b.payment), 0).toFixed(2)}
