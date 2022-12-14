@@ -19,7 +19,6 @@ function Tip(props) {
                 <input
                     type="number"
                     min="0"
-                    max="100"
                     autoFocus
                     value={percentage}
                     onChange={event => setPercentage(event.target.value)}

@@ -2,10 +2,11 @@ import React from "react";
 
 import Person from "../../shared/Person/Person";
 import Card from "../Card/Card";
+import './PeopleList.scss';
 
 function PeopleList(props) {
     return (
-        <ul>
+        <ul className="people-list">
             {props.people.map(person => {
                 return (
                     <Person

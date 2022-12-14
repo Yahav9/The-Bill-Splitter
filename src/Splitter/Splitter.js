@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../shared/Button/Button";
 import Item from "../shared/Item/Item";
 import PeopleList from "../shared/PeopleList/PeopleList";
+import "./Splitter.scss";
 
 function Splitter(props) {
     const [items, setItems] = useState([]);
@@ -51,8 +52,8 @@ function Splitter(props) {
     }
 
     return (
-        <>
-            <h2>Who's paying?</h2>
+        <div className="splitter">
+            <h1>Who's paying?</h1>
             {
                 items.length > 0 &&
                 <Item
@@ -65,12 +66,13 @@ function Splitter(props) {
                 onPersonClick={addOrRemoveSplitter}
             />
             <Button
+                className="next-button"
                 onClick={splitItem}
                 disabled={splitters.length < 1}
             >
                 {items.length > itemsIndex + 1 ? 'NEXT' : 'CALCULATE'}
             </Button>
-        </>
+        </div>
     )
 }
 
