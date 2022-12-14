@@ -20,17 +20,14 @@ function Splitter(props) {
         for (let splitter of splitters) {
             if (splitter === personName) {
                 setSplitters(splitters.filter(splitter => { return splitter !== personName }));
-                console.log(splitters);
                 return;
             }
         }
         setSplitters(splitters => [...splitters, personName]);
-        console.log(splitters);
     }
 
     const splitItem = () => {
         const splittedPrice = items[itemsIndex].price / splitters.length;
-        console.log(splittedPrice);
         for (const splitter of splitters) {
             for (const person of people) {
                 if (splitter === person.name) {
@@ -63,6 +60,7 @@ function Splitter(props) {
             }
             <PeopleList
                 people={people}
+                splitters={splitters}
                 onPersonClick={addOrRemoveSplitter}
             />
             <Button
