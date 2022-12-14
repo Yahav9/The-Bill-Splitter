@@ -9,10 +9,12 @@ function PeopleList(props) {
         <ul className="people-list">
             {props.people.map(person => {
                 let isSelected = false;
-                for (let splitter of props.splitters) {
-                    if (splitter === person.name) {
-                        isSelected = true;
-                        break;
+                if (props.splitters) {
+                    for (let splitter of props.splitters) {
+                        if (splitter === person.name) {
+                            isSelected = true;
+                            break;
+                        }
                     }
                 }
                 return (
@@ -27,11 +29,9 @@ function PeopleList(props) {
             })}
             {
                 props.total &&
-                <li>
-                    <Card>
-                        <h2>Total: {props.total}</h2>
-                    </Card>
-                </li>
+                <Card>
+                    <h2>Total: {props.total}₪</h2>
+                </Card>
             }
         </ul>
     )

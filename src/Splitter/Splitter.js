@@ -41,7 +41,7 @@ function Splitter(props) {
         } else {
             const tip = Number(localStorage.getItem('tip'));
             for (const person of people) {
-                person.payment = person.payment * tip;
+                person.payment = Math.round(person.payment * tip * 10) / 10;
             }
             localStorage.setItem('storedPeople', JSON.stringify(people));
             props.onCalculateClick();
