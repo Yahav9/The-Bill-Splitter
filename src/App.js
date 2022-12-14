@@ -1,11 +1,18 @@
-import React, { useState } from "react";
-import Conclusion from "./Conclusion/Conclusion";
+import React, { useState, lazy, Suspense } from "react";
 
-import ItemCollector from "./ItemCollector/ItemCollector";
-import NamesCollector from "./NamesCollector/NamesCollector"
-import Splitter from "./Splitter/Splitter";
-import Tip from "./Tip/Tip";
+// import Conclusion from "./Conclusion/Conclusion";
+// import ItemCollector from "./ItemCollector/ItemCollector";
+// import NamesCollector from "./NamesCollector/NamesCollector"
+// import Splitter from "./Splitter/Splitter";
+// import Tip from "./Tip/Tip";
 import Header from "./shared/Header/Header";
+import LoadingSpinner from './shared/LoadingSpinner/LoadingSpinner'
+
+const ItemCollector = lazy(() => import("./ItemCollector/ItemCollector"));
+const NamesCollector = lazy(() => import("./NamesCollector/NamesCollector"));
+const Tip = lazy(() => import("./Tip/Tip"));
+const Splitter = lazy(() => import("./Splitter/Splitter"));
+const Conclusion = lazy(() => import("./Conclusion/Conclusion"));
 
 function App() {
     const [phase, setPhase] = useState(1);
@@ -53,7 +60,15 @@ function App() {
         <>
             <Header />
             <main>
-                {renderedComponent}
+                <Suspense
+                    fallback={
+                        <div className="center">
+                            <LoadingSpinner />
+                        </div>
+                    }
+                >
+                    {renderedComponent}
+                </Suspense>
             </main>
         </>
     )
