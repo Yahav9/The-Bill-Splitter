@@ -1,0 +1,71 @@
+{
+  "plugins": ["testing-library", "jest-dom"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": ["error", "unix"],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "semi": "error",
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "eol-last": ["error", "always"],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ],
+    "array-bracket-spacing": ["error", "never"],
+    "arrow-spacing": "error",
+    "brace-style": "error",
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "computed-property-spacing": ["error", "never"],
+    "dot-location": ["error", "property"],
+    "func-call-spacing": ["error", "never"],
+    "implicit-arrow-linebreak": ["error", "beside"],
+    "key-spacing": [
+      "error",
+      {
+        "beforeColon": false
+      }
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true
+      }
+    ],
+    "no-multi-spaces": "error",
+    "no-trailing-spaces": "error",
+    "no-whitespace-before-property": "error",
+    "spaced-comment": ["error", "always"]
+  }
+}

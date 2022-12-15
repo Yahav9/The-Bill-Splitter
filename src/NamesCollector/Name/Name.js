@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import Card from '../../shared/Card/Card';
 import './Name.scss';
@@ -10,7 +10,7 @@ function Name(props) {
                 <h2>{props.name}</h2>
             </Card>
         </li>
-    )
+    );
 }
 
 export default Name;

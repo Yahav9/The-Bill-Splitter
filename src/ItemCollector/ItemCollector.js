@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 import './ItemCollector.scss';
-import ItemsList from "./ItemsList/ItemsList";
+import ItemsList from './ItemsList/ItemsList';
 
 function ItemCollector(props) {
     return (
@@ -11,7 +11,7 @@ function ItemCollector(props) {
                 onNextClick={props.onNextClick}
             />
         </div>
-    )
+    );
 }
 
 export default ItemCollector;

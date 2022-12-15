@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Item from "../../shared/Item/Item";
-import ItemForm from "../ItemForm/ItemForm";
-import Card from "../../shared/Card/Card";
-import Button from "../../shared/Button/Button";
-import "./ItemsList.scss";
+import Item from '../../shared/Item/Item';
+import ItemForm from '../ItemForm/ItemForm';
+import Card from '../../shared/Card/Card';
+import Button from '../../shared/Button/Button';
+import './ItemsList.scss';
 
 function ItemsList(props) {
     const [items, setItems] = useState([]);
@@ -14,13 +14,13 @@ function ItemsList(props) {
         name.length < 1 && (name = 'Item');
         const newItem = { name, price, index };
         setItems(items => [...items, newItem]);
-    }
+    };
 
     const nextClickHandler = () => {
         localStorage.clear();
         localStorage.setItem('storedItems', JSON.stringify(items));
         props.onNextClick();
-    }
+    };
 
     return (
         <ul className="items-list">
@@ -33,7 +33,7 @@ function ItemsList(props) {
                                 price={item.price}
                             />
                         </li>
-                    )
+                    );
                 })
             }
             <li>
@@ -49,7 +49,7 @@ function ItemsList(props) {
                 disabled={items.length < 1}
             >NEXT</Button>
         </ul>
-    )
+    );
 }
 
 export default ItemsList;

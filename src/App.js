@@ -1,25 +1,25 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense } from 'react';
 
 // import Conclusion from "./Conclusion/Conclusion";
 // import ItemCollector from "./ItemCollector/ItemCollector";
 // import NamesCollector from "./NamesCollector/NamesCollector"
 // import Splitter from "./Splitter/Splitter";
 // import Tip from "./Tip/Tip";
-import Header from "./shared/Header/Header";
-import LoadingSpinner from './shared/LoadingSpinner/LoadingSpinner'
+import Header from './shared/Header/Header';
+import LoadingSpinner from './shared/LoadingSpinner/LoadingSpinner';
 
-const ItemCollector = lazy(() => import("./ItemCollector/ItemCollector"));
-const NamesCollector = lazy(() => import("./NamesCollector/NamesCollector"));
-const Tip = lazy(() => import("./Tip/Tip"));
-const Splitter = lazy(() => import("./Splitter/Splitter"));
-const Conclusion = lazy(() => import("./Conclusion/Conclusion"));
+const ItemCollector = lazy(() => import('./ItemCollector/ItemCollector'));
+const NamesCollector = lazy(() => import('./NamesCollector/NamesCollector'));
+const Tip = lazy(() => import('./Tip/Tip'));
+const Splitter = lazy(() => import('./Splitter/Splitter'));
+const Conclusion = lazy(() => import('./Conclusion/Conclusion'));
 
 function App() {
     const [phase, setPhase] = useState(1);
 
     const nextClickHandler = () => {
         setPhase(phase + 1);
-    }
+    };
 
     let renderedComponent;
 
@@ -27,29 +27,29 @@ function App() {
         case 1:
             renderedComponent = <ItemCollector
                 onNextClick={nextClickHandler}
-            />
+            />;
             break;
 
         case 2:
             renderedComponent = <NamesCollector
                 onNextClick={nextClickHandler}
-            />
+            />;
             break;
 
         case 3:
             renderedComponent = <Tip
                 onNextClick={nextClickHandler}
-            />
+            />;
             break;
 
         case 4:
             renderedComponent = <Splitter
                 onCalculateClick={nextClickHandler}
-            />
+            />;
             break;
 
         case 5:
-            renderedComponent = <Conclusion />
+            renderedComponent = <Conclusion />;
             break;
 
         default:
@@ -71,7 +71,7 @@ function App() {
                 </Suspense>
             </main>
         </>
-    )
+    );
 }
 
 export default App;

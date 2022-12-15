@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import Person from "../../shared/Person/Person";
-import Card from "../Card/Card";
+import Person from '../../shared/Person/Person';
+import Card from '../Card/Card';
 import './PeopleList.scss';
 
 function PeopleList(props) {
@@ -26,7 +26,7 @@ function PeopleList(props) {
                             onClick={props.onPersonClick}
                             isSelected={isSelected}
                         />
-                    )
+                    );
                 })}
             </ul>
             {
@@ -36,7 +36,7 @@ function PeopleList(props) {
                 </Card>
             }
         </>
-    )
+    );
 }
 
 export default PeopleList;

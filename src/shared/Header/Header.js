@@ -7,7 +7,7 @@ function Header() {
         <header className="header">
             <h1>TheBillSplitter</h1>
         </header>
-    )
+    );
 };
 
 export default Header;

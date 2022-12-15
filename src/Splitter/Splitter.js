@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Button from "../shared/Button/Button";
-import Item from "../shared/Item/Item";
-import PeopleList from "../shared/PeopleList/PeopleList";
-import "./Splitter.scss";
+import Button from '../shared/Button/Button';
+import Item from '../shared/Item/Item';
+import PeopleList from '../shared/PeopleList/PeopleList';
+import './Splitter.scss';
 
 function Splitter(props) {
     const [items, setItems] = useState([]);
@@ -16,15 +16,19 @@ function Splitter(props) {
         setPeople(JSON.parse(localStorage.getItem('storedPeople')));
     }, []);
 
-    const addOrRemoveSplitter = personName => {
+    const addOrRemoveSplitter = (personName) => {
         for (let splitter of splitters) {
             if (splitter === personName) {
-                setSplitters(splitters.filter(splitter => { return splitter !== personName }));
+                setSplitters(
+                    splitters.filter((splitter) => {
+                        return splitter !== personName;
+                    })
+                );
                 return;
             }
         }
-        setSplitters(splitters => [...splitters, personName]);
-    }
+        setSplitters((splitters) => [...splitters, personName]);
+    };
 
     const splitItem = () => {
         const splittedPrice = items[itemsIndex].price / splitters.length;
@@ -46,18 +50,14 @@ function Splitter(props) {
             localStorage.setItem('storedPeople', JSON.stringify(people));
             props.onCalculateClick();
         }
-    }
+    };
 
     return (
         <div className="splitter">
             <h1>Who's paying?</h1>
-            {
-                items.length > 0 &&
-                <Item
-                    name={items[itemsIndex].name}
-                    price={items[itemsIndex].price}
-                />
-            }
+            {items.length > 0 && (
+                <Item name={items[itemsIndex].name} price={items[itemsIndex].price} />
+            )}
             <PeopleList
                 people={people}
                 splitters={splitters}
@@ -71,7 +71,7 @@ function Splitter(props) {
                 {items.length > itemsIndex + 1 ? 'NEXT' : 'CALCULATE'}
             </Button>
         </div>
-    )
+    );
 }
 
 export default Splitter;

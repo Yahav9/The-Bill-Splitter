@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Name from "../Name/Name";
-import NameForm from "../NameForm/NameForm";
-import Button from "../../shared/Button/Button";
-import "./NamesList.scss";
+import Name from '../Name/Name';
+import NameForm from '../NameForm/NameForm';
+import Button from '../../shared/Button/Button';
+import './NamesList.scss';
 
 function NamesList(props) {
     const [people, setPeople] = useState([]);
@@ -12,12 +12,12 @@ function NamesList(props) {
         event.preventDefault();
         const newPerson = { name, payment: 0, index };
         setPeople(people => [...people, newPerson]);
-    }
+    };
 
     const nextClickHandler = () => {
         localStorage.setItem('storedPeople', JSON.stringify(people));
         props.onNextClick();
-    }
+    };
 
     return (
         <ul className="names-list">
@@ -26,7 +26,7 @@ function NamesList(props) {
                     return <Name
                         key={person.index}
                         name={person.name}
-                    />
+                    />;
                 })
             }
             <NameForm onAdd={createName} />
@@ -36,7 +36,7 @@ function NamesList(props) {
                 disabled={people.length < 2}
             >Next</Button>
         </ul>
-    )
+    );
 }
 
 export default NamesList;

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Button from "../shared/Button/Button";
+import Button from '../shared/Button/Button';
 import './Tip.scss';
 
 function Tip(props) {
@@ -10,7 +10,7 @@ function Tip(props) {
         event.preventDefault();
         localStorage.setItem('tip', 1 + percentage / 100);
         props.onNextClick();
-    }
+    };
 
     return (
         <form className="tip" onSubmit={submitHandler}>
@@ -25,7 +25,7 @@ function Tip(props) {
                 /> %</div>
             <Button>Next</Button>
         </form>
-    )
+    );
 }
 
 export default Tip;

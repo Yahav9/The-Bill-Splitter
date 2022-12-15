@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 
-import Button from "../../shared/Button/Button";
-import "./ItemForm.scss";
+import Button from '../../shared/Button/Button';
+import './ItemForm.scss';
 
 function ItemForm(props) {
     const [name, setName] = useState('');
@@ -15,7 +15,7 @@ function ItemForm(props) {
         ref.current.focus();
         props.onAdd(event, name, price, index);
         setIndex(index + 1);
-    }
+    };
 
     return (
         <form className="item-form" onSubmit={submitHandler}>
@@ -42,7 +42,7 @@ function ItemForm(props) {
                 +
             </Button>
         </form>
-    )
+    );
 }
 
 export default ItemForm;

@@ -1,15 +1,19 @@
 .name-form {
-    height: 4vh;
+    height: 5vh;
     width: 80%;
     font-size: 80%;
     display: flex;
     justify-content: space-evenly;
+    margin: 20px;
 
     input {
         width: 65%;
+        height: 100%;
         border: 2px solid rgb(111, 151, 160);
         border-radius: 5px;
         box-shadow: 0 0 2px rgb(123, 166, 213);
+        font-size: 150%;
+        text-align: center;
     }
 
     button {

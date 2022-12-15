@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 import './NamesCollector.scss';
-import NamesList from "./NamesList/NamesList";
+import NamesList from './NamesList/NamesList';
 
 function NamesCollector(props) {
     return (
@@ -11,7 +11,7 @@ function NamesCollector(props) {
                 onNextClick={props.onNextClick}
             />
         </div>
-    )
+    );
 }
 
 export default NamesCollector;

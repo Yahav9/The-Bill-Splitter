@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import Card from "../../shared/Card/Card";
+import Card from '../../shared/Card/Card';
 import './Person.scss';
 
 function Person(props) {
@@ -9,10 +9,10 @@ function Person(props) {
         if (props.onClick) {
             props.onClick(props.name);
         }
-    }
+    };
     return (
         <li onClick={clickHandler}>
-            <Card className={props.isSelected ? 'selected' : ''}>
+            <Card className={props.isSelected ? 'person selected' : 'person'}>
                 <h2>{props.name}</h2>
                 {
                     props.payment &&
@@ -20,7 +20,7 @@ function Person(props) {
                 }
             </Card>
         </li>
-    )
+    );
 }
 
 export default Person;
