@@ -1,6 +1,6 @@
 # YOU CAN VISIT THE WEBAPP ON https://thebillsplitter.web.app 
 
-# This is a web app that helps you to split a bill in a resturant or a bar between multiple people, in an easy and fun way.
+This is a web app that helps you to split a bill in a restaurant or a bar between multiple people, in an easy and fun way.
 
 STEP 1 - Insert all the items in the bill.
 
