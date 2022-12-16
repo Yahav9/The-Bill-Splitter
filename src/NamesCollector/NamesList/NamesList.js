@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Name from '../Name/Name';
+import Person from '../../shared/Person/Person';
 import NameForm from '../NameForm/NameForm';
 import Button from '../../shared/Button/Button';
 import './NamesList.scss';
@@ -20,22 +20,24 @@ function NamesList(props) {
     };
 
     return (
-        <ul className="names-list">
-            {
-                people.length > 0 && people.map(person => {
-                    return <Name
-                        key={person.index}
-                        name={person.name}
-                    />;
-                })
-            }
+        <>
+            <ul className="names-list">
+                {
+                    people.length > 0 && people.map(person => {
+                        return <Person
+                            key={person.index}
+                            name={person.name}
+                        />;
+                    })
+                }
+            </ul>
             <NameForm onAdd={createName} />
             <Button
                 className="next-button"
                 onClick={nextClickHandler}
                 disabled={people.length < 2}
             >Next</Button>
-        </ul>
+        </>
     );
 }
 
