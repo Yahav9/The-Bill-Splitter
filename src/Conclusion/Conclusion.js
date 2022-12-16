@@ -12,7 +12,7 @@ function Conclusion() {
 
     return (
         <div className="conclusion">
-            <h1>Come Again!</h1>
+            <h1>See You Next Time!</h1>
             <PeopleList
                 people={people}
                 total={people
