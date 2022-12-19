@@ -1,10 +1,5 @@
 import React, { useState, lazy, Suspense } from 'react';
 
-// import Conclusion from "./Conclusion/Conclusion";
-// import ItemCollector from "./ItemCollector/ItemCollector";
-// import NamesCollector from "./NamesCollector/NamesCollector"
-// import Splitter from "./Splitter/Splitter";
-// import Tip from "./Tip/Tip";
 import Header from './shared/Header/Header';
 import LoadingSpinner from './shared/LoadingSpinner/LoadingSpinner';
 

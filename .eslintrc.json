@@ -1,5 +1,8 @@
 {
-  "plugins": ["testing-library", "jest-dom"],
+  "plugins": [
+    "testing-library",
+    "jest-dom"
+  ],
   "extends": [
     "react-app",
     "react-app/jest",
@@ -8,64 +11,88 @@
   ],
   "rules": {
     "indent": [
-      "error",
+      "warn",
       4,
       {
         "SwitchCase": 1
       }
     ],
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": [
+      "warn",
+      "unix"
+    ],
     "quotes": [
-      "error",
+      "warn",
       "single",
       {
         "avoidEscape": true
       }
     ],
-    "semi": "error",
+    "semi": "warn",
     "max-len": [
-      "error",
+      "warn",
       {
         "code": 120
       }
     ],
-    "eol-last": ["error", "always"],
+    "eol-last": [
+      "warn",
+      "always"
+    ],
     "no-multiple-empty-lines": [
-      "error",
+      "warn",
       {
         "max": 1,
         "maxEOF": 0
       }
     ],
-    "array-bracket-spacing": ["error", "never"],
-    "arrow-spacing": "error",
-    "brace-style": "error",
+    "array-bracket-spacing": [
+      "warn",
+      "never"
+    ],
+    "arrow-spacing": "warn",
+    "brace-style": "warn",
     "comma-spacing": [
-      "error",
+      "warn",
       {
         "before": false,
         "after": true
       }
     ],
-    "computed-property-spacing": ["error", "never"],
-    "dot-location": ["error", "property"],
-    "func-call-spacing": ["error", "never"],
-    "implicit-arrow-linebreak": ["error", "beside"],
+    "computed-property-spacing": [
+      "warn",
+      "never"
+    ],
+    "dot-location": [
+      "warn",
+      "property"
+    ],
+    "func-call-spacing": [
+      "warn",
+      "never"
+    ],
+    "implicit-arrow-linebreak": [
+      "warn",
+      "beside"
+    ],
     "key-spacing": [
-      "error",
+      "warn",
       {
         "beforeColon": false
       }
     ],
     "keyword-spacing": [
-      "error",
+      "warn",
       {
         "before": true
       }
     ],
-    "no-multi-spaces": "error",
-    "no-trailing-spaces": "error",
-    "no-whitespace-before-property": "error",
-    "spaced-comment": ["error", "always"]
+    "no-multi-spaces": "warn",
+    "no-trailing-spaces": "warn",
+    "no-whitespace-before-property": "warn",
+    "spaced-comment": [
+      "warn",
+      "always"
+    ]
   }
 }
