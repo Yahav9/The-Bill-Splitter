@@ -29,7 +29,7 @@ test('ItemCollector component', async () => {
     expect(itemInput.value).toBe('Fries');
     expect(plusButton).toBeDisabled();
 
-    // Value of input with type 'number' should not be changed when typing English letters.
+    // Test invalid input.
     await user.type(priceInput, 'abcd');
     expect(priceInput.value).toBe('');
 
@@ -42,6 +42,7 @@ test('ItemCollector component', async () => {
     await user.click(plusButton);
     items = getAllByRole('listitem');
     expect(items.length).toBe(2);
+    expect(items[0]).toHaveTextContent('Fries20.00₪');
     expect(nextButton).toBeEnabled();
     expect(plusButton).toBeDisabled();
     expect(itemInput.value).toBe('');
@@ -59,9 +60,24 @@ test('ItemCollector component', async () => {
     await user.click(plusButton);
     items = getAllByRole('listitem');
     expect(items.length).toBe(3);
+    expect(items[1]).toHaveTextContent('פיצה55.90₪');
     expect(nextButton).toBeEnabled();
     expect(plusButton).toBeDisabled();
     expect(itemInput.value).toBe('');
     expect(priceInput.value).toBe('');
     expect(total).toHaveTextContent('75.90₪');
+
+    await user.type(priceInput, '37.3');
+    expect(priceInput.value).toBe('37.3');
+    expect(plusButton).toBeEnabled();
+
+    await user.click(plusButton);
+    items = getAllByRole('listitem');
+    expect(items.length).toBe(4);
+    expect(items[2]).toHaveTextContent('Item37.30₪');
+    expect(nextButton).toBeEnabled();
+    expect(plusButton).toBeDisabled();
+    expect(itemInput.value).toBe('');
+    expect(priceInput.value).toBe('');
+    expect(total).toHaveTextContent('113.20₪');
 });

@@ -37,7 +37,7 @@ function NamesCollector(props) {
                 className="next-button"
                 onClick={nextClickHandler}
                 disabled={people.length < 2}
-            >Next</Button>
+            >NEXT</Button>
         </div>
     );
 }
