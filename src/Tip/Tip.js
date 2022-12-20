@@ -23,7 +23,7 @@ function Tip(props) {
                     value={percentage}
                     onChange={event => setPercentage(event.target.value)}
                 /> %</div>
-            <Button>Next</Button>
+            <Button disabled={percentage < 1}>NEXT</Button>
         </form>
     );
 }
