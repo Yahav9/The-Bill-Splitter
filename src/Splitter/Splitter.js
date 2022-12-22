@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { calculatePayment, splitItem } from './helper-functions/helperFunctions';
 import Button from '../shared/Button/Button';
 import Item from '../shared/Item/Item';
 import PeopleList from '../shared/PeopleList/PeopleList';
@@ -30,23 +31,14 @@ function Splitter(props) {
         setSplitters((splitters) => [...splitters, personName]);
     };
 
-    const splitItem = () => {
-        const splittedPrice = items[itemsIndex].price / splitters.length;
-        for (const splitter of splitters) {
-            for (const person of people) {
-                if (splitter === person.name) {
-                    person.payment += splittedPrice;
-                }
-            }
-        }
+    const nextClickHandler = () => {
+        splitItem(items[itemsIndex].price, splitters, people);
         if (items.length > itemsIndex + 1) {
             setSplitters([]);
             setItemsIndex(itemsIndex + 1);
         } else {
             const tip = Number(localStorage.getItem('tip'));
-            for (const person of people) {
-                person.payment = Math.round(person.payment * tip * 10) / 10;
-            }
+            calculatePayment(tip, people);
             localStorage.setItem('storedPeople', JSON.stringify(people));
             props.onCalculateClick();
         }
@@ -65,7 +57,7 @@ function Splitter(props) {
             />
             <Button
                 className="next-button"
-                onClick={splitItem}
+                onClick={nextClickHandler}
                 disabled={splitters.length < 1}
             >
                 {items.length > itemsIndex + 1 ? 'NEXT' : 'CALCULATE'}
