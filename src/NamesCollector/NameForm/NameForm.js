@@ -27,6 +27,7 @@ function ItemForm(props) {
             />
             <Button
                 disabled={name.length < 1}
+                inverse
             >
                 +
             </Button>

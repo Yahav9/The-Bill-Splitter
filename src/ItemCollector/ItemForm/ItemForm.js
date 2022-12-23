@@ -24,19 +24,19 @@ function ItemForm(props) {
                 placeholder="Item (optional)"
                 value={name}
                 onChange={event => setName(event.target.value)}
+                autoFocus
+                ref={ref}
             />
             <input
                 className="price"
                 type="number"
                 placeholder="Price"
-                autoFocus
-                ref={ref}
                 value={price}
                 step="0.1"
                 onChange={event => setPrice(event.target.value)}
             />
             <Button
-
+                inverse
                 disabled={price <= 0}
             >
                 +
