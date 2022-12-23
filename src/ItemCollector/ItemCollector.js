@@ -22,6 +22,10 @@ function ItemCollector(props) {
         props.onNextClick();
     };
 
+    const itemDeleteHandler = deletedItemIndex => {
+        setItems(items.filter(item => item.index !== deletedItemIndex));
+    };
+
     return (
         <div className="item-collector">
             <h1>Give Me Every Item on the Bill</h1>
@@ -33,6 +37,9 @@ function ItemCollector(props) {
                                 <Item
                                     name={item.name}
                                     price={item.price}
+                                    index={item.index}
+                                    onDelete={itemDeleteHandler}
+                                    isItemCollectorPhase
                                 />
                             </li>
                         );

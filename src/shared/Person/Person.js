@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from '../../shared/Card/Card';
+import Button from '../Button/Button';
 import './Person.scss';
 
 function Person(props) {
@@ -17,6 +18,15 @@ function Person(props) {
                 {
                     props.payment &&
                     <h2>{props.payment.toFixed(2)}₪</h2>
+                }
+                {
+                    props.isNamesCollectorPhase &&
+                    <Button onClick={() => props.onDelete(props.index)} danger>
+                        <i className="material-icons"
+                        >
+                            delete
+                        </i>
+                    </Button>
                 }
             </Card>
         </li>

@@ -19,6 +19,10 @@ function NamesCollector(props) {
         props.onNextClick();
     };
 
+    const personDeleteHandler = deletedPersonIndex => {
+        setPeople(people.filter(person => person.index !== deletedPersonIndex));
+    };
+
     return (
         <div className="names-collector">
             <h1>Who's Here?</h1>
@@ -28,6 +32,9 @@ function NamesCollector(props) {
                         return <Person
                             key={person.index}
                             name={person.name}
+                            index={person.index}
+                            onDelete={personDeleteHandler}
+                            isNamesCollectorPhase
                         />;
                     })
                 }
