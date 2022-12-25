@@ -4,11 +4,18 @@ import Button from '../shared/Button/Button';
 import './Tip.scss';
 
 function Tip(props) {
-    const [percentage, setPercentage] = useState(10);
+    const [percentage, setPercentage] = useState(props.data ? Math.round((props.data.tip - 1) * 100) : []);
 
     const submitHandler = event => {
         event.preventDefault();
-        localStorage.setItem('tip', 1 + percentage / 100);
+        const data = {
+            expiration: new Date(new Date().getTime() + 1000 * 60 * 60).toISOString(),
+            phase: 4,
+            items: props.data.items,
+            people: props.data.people,
+            tip: 1 + percentage / 100
+        };
+        localStorage.setItem('billSplitterData', JSON.stringify(data));
         props.onNextClick();
     };
 
@@ -19,6 +26,8 @@ function Tip(props) {
                 <input
                     type="number"
                     min="0"
+                    max="100"
+                    step="0.1"
                     autoFocus
                     value={percentage}
                     onChange={event => setPercentage(event.target.value)}

@@ -7,7 +7,7 @@ import Card from '../shared/Card/Card';
 import Button from '../shared/Button/Button';
 
 function ItemCollector(props) {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(props.data ? props.data.items : []);
 
     const createItem = (event, name, price, index) => {
         event.preventDefault();
@@ -17,8 +17,14 @@ function ItemCollector(props) {
     };
 
     const nextClickHandler = () => {
-        localStorage.clear();
-        localStorage.setItem('storedItems', JSON.stringify(items));
+        const data = {
+            expiration: new Date(new Date().getTime() + 1000 * 60 * 60).toISOString(),
+            phase: 2,
+            items,
+            people: props.data ? props.data.people : [],
+            tip: props.data ? props.data.tip : 1.1
+        };
+        localStorage.setItem('billSplitterData', JSON.stringify(data));
         props.onNextClick();
     };
 

@@ -6,7 +6,7 @@ import NameForm from './NameForm/NameForm';
 import Button from '../shared/Button/Button';
 
 function NamesCollector(props) {
-    const [people, setPeople] = useState([]);
+    const [people, setPeople] = useState(props.data ? props.data.people : []);
 
     const createName = (event, name, index) => {
         event.preventDefault();
@@ -15,7 +15,14 @@ function NamesCollector(props) {
     };
 
     const nextClickHandler = () => {
-        localStorage.setItem('storedPeople', JSON.stringify(people));
+        const data = {
+            expiration: new Date(new Date().getTime() + 1000 * 60 * 60).toISOString(),
+            phase: 3,
+            items: props.data ? props.data.items : [],
+            people,
+            tip: props.data ? props.data.tip : 1.1
+        };
+        localStorage.setItem('billSplitterData', JSON.stringify(data));
         props.onNextClick();
     };
 

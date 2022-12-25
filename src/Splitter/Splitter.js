@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { calculatePayment, splitItem } from './helper-functions/helperFunctions';
 import Button from '../shared/Button/Button';
@@ -7,15 +7,10 @@ import PeopleList from '../shared/PeopleList/PeopleList';
 import './Splitter.scss';
 
 function Splitter(props) {
-    const [items, setItems] = useState([]);
-    const [people, setPeople] = useState([]);
     const [itemsIndex, setItemsIndex] = useState(0);
     const [splitters, setSplitters] = useState([]);
-
-    useEffect(() => {
-        setItems(JSON.parse(localStorage.getItem('storedItems')));
-        setPeople(JSON.parse(localStorage.getItem('storedPeople')));
-    }, []);
+    const items = props.data.items;
+    const people = props.data.people;
 
     const addOrRemoveSplitter = (personName) => {
         for (let splitter of splitters) {
@@ -37,9 +32,16 @@ function Splitter(props) {
             setSplitters([]);
             setItemsIndex(itemsIndex + 1);
         } else {
-            const tip = Number(localStorage.getItem('tip'));
+            const tip = Number(props.data.tip);
             calculatePayment(tip, people);
-            localStorage.setItem('storedPeople', JSON.stringify(people));
+            const data = {
+                expiration: new Date(new Date().getTime() + 1000 * 60 * 60).toISOString(),
+                phase: 5,
+                items: props.data.items,
+                people,
+                tip: props.data.tip
+            };
+            localStorage.setItem('billSplitterData', JSON.stringify(data));
             props.onCalculateClick();
         }
     };
