@@ -39,6 +39,11 @@ function App() {
         setPhase(phase - 1);
     };
 
+    const newBillClickHandler = async () => {
+        localStorage.removeItem('billSplitterData');
+        window.location.reload();
+    };
+
     let renderedComponent;
 
     switch (phase) {
@@ -87,7 +92,7 @@ function App() {
 
     return (
         <>
-            <Header />
+            <Header onNewBillClick={newBillClickHandler} />
             <main>
                 <Suspense
                     fallback={
