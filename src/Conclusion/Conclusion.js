@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../shared/Button/Button';
 
 import PeopleList from '../shared/PeopleList/PeopleList';
 import './Conclusion.scss';
@@ -13,6 +14,7 @@ function Conclusion(props) {
                     .reduce((a, b) => Number(a) + Number(b.payment), 0)
                     .toFixed(2)}
             />
+            <Button inverse onClick={() => props.onBackClick()}>BACK</Button>
         </div>
     );
 }

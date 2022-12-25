@@ -6,15 +6,13 @@ import './ItemForm.scss';
 function ItemForm(props) {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
-    const [index, setIndex] = useState(0);
     const ref = useRef(null);
 
     const submitHandler = event => {
         setName('');
         setPrice('');
         ref.current.focus();
-        props.onAdd(event, name, price, index);
-        setIndex(index + 1);
+        props.onAdd(event, name, price);
     };
 
     return (

@@ -8,22 +8,24 @@ import Button from '../shared/Button/Button';
 function NamesCollector(props) {
     const [people, setPeople] = useState(props.data ? props.data.people : []);
 
-    const createName = (event, name, index) => {
+    const createName = (event, name) => {
         event.preventDefault();
+        const index = people.length < 1 ? 0 : people[people.length - 1].index + 1;
         const newPerson = { name, payment: 0, index };
         setPeople(people => [...people, newPerson]);
     };
 
-    const nextClickHandler = () => {
+    const nextOrBackClickHandler = phase => {
         const data = {
             expiration: new Date(new Date().getTime() + 1000 * 60 * 60).toISOString(),
-            phase: 3,
+            phase,
             items: props.data ? props.data.items : [],
             people,
             tip: props.data ? props.data.tip : 1.1
         };
         localStorage.setItem('billSplitterData', JSON.stringify(data));
-        props.onNextClick();
+        if (phase === 3) props.onNextClick();
+        if (phase === 1) props.onBackClick();
     };
 
     const personDeleteHandler = deletedPersonIndex => {
@@ -47,11 +49,18 @@ function NamesCollector(props) {
                 }
             </ul>
             <NameForm onAdd={createName} />
-            <Button
-                className="next-button"
-                onClick={nextClickHandler}
-                disabled={people.length < 2}
-            >NEXT</Button>
+            <div className='buttons'>
+                <Button
+                    inverse
+                    className="back-button"
+                    onClick={() => nextOrBackClickHandler(1)}
+                >Back</Button>
+                <Button
+                    className="next-button"
+                    onClick={() => nextOrBackClickHandler(3)}
+                    disabled={people.length < 2}
+                >NEXT</Button>
+            </div>
         </div>
     );
 }

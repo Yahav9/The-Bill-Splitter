@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { calculatePayment, splitItem } from './helper-functions/helperFunctions';
 import Button from '../shared/Button/Button';
@@ -11,6 +11,12 @@ function Splitter(props) {
     const [splitters, setSplitters] = useState([]);
     const items = props.data.items;
     const people = props.data.people;
+
+    useEffect(() => {
+        people.forEach(person => {
+            person.payment = 0;
+        });
+    }, [people]);
 
     const addOrRemoveSplitter = (personName) => {
         for (let splitter of splitters) {
@@ -31,6 +37,7 @@ function Splitter(props) {
         if (items.length > itemsIndex + 1) {
             setSplitters([]);
             setItemsIndex(itemsIndex + 1);
+            console.log(people);
         } else {
             const tip = Number(props.data.tip);
             calculatePayment(tip, people);
@@ -57,13 +64,16 @@ function Splitter(props) {
                 splitters={splitters}
                 onPersonClick={addOrRemoveSplitter}
             />
-            <Button
-                className="next-button"
-                onClick={nextClickHandler}
-                disabled={splitters.length < 1}
-            >
-                {items.length > itemsIndex + 1 ? 'NEXT' : 'CALCULATE'}
-            </Button>
+            <div className='buttons'>
+                <Button inverse onClick={() => props.onBackClick()}>BACK</Button>
+                <Button
+                    className="next-button"
+                    onClick={nextClickHandler}
+                    disabled={splitters.length < 1}
+                >
+                    {items.length > itemsIndex + 1 ? 'NEXT' : 'CALCULATE'}
+                </Button>
+            </div>
         </div>
     );
 }

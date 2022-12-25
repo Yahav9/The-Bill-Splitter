@@ -35,12 +35,17 @@ function App() {
         setPhase(phase + 1);
     };
 
+    const backClickHandler = () => {
+        setPhase(phase - 1);
+    };
+
     let renderedComponent;
 
     switch (phase) {
         case 1:
             renderedComponent = <ItemCollector
                 onNextClick={nextClickHandler}
+                onBackClick={backClickHandler}
                 data={data}
             />;
             break;
@@ -48,6 +53,7 @@ function App() {
         case 2:
             renderedComponent = <NamesCollector
                 onNextClick={nextClickHandler}
+                onBackClick={backClickHandler}
                 data={data}
             />;
             break;
@@ -55,6 +61,7 @@ function App() {
         case 3:
             renderedComponent = <Tip
                 onNextClick={nextClickHandler}
+                onBackClick={backClickHandler}
                 data={data}
             />;
             break;
@@ -62,12 +69,16 @@ function App() {
         case 4:
             renderedComponent = <Splitter
                 onCalculateClick={nextClickHandler}
+                onBackClick={backClickHandler}
                 data={data}
             />;
             break;
 
         case 5:
-            renderedComponent = <Conclusion data={data} />;
+            renderedComponent = <Conclusion
+                data={data}
+                onBackClick={backClickHandler}
+            />;
             break;
 
         default:

@@ -5,14 +5,12 @@ import './NameForm.scss';
 
 function ItemForm(props) {
     const [name, setName] = useState('');
-    const [index, setIndex] = useState(0);
     const ref = useRef(null);
 
     const submitHandler = event => {
         setName('');
         ref.current.focus();
-        props.onAdd(event, name, index);
-        setIndex(index + 1);
+        props.onAdd(event, name,);
     };
 
     return (

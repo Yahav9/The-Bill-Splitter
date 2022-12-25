@@ -9,8 +9,9 @@ import Button from '../shared/Button/Button';
 function ItemCollector(props) {
     const [items, setItems] = useState(props.data ? props.data.items : []);
 
-    const createItem = (event, name, price, index) => {
+    const createItem = (event, name, price) => {
         event.preventDefault();
+        const index = items.length < 1 ? 0 : items[items.length - 1].index + 1;
         name.length < 1 && (name = 'Item');
         const newItem = { name, price, index };
         setItems(items => [...items, newItem]);

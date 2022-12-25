@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import NamesCollector from './NamesCollector';
 
-it('ItemCollector component', async () => {
+it('NamesCollector component', async () => {
     const user = userEvent.setup();
     render(<NamesCollector />);
 
