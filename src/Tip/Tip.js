@@ -4,7 +4,7 @@ import Button from '../shared/Button/Button';
 import './Tip.scss';
 
 function Tip(props) {
-    const [percentage, setPercentage] = useState(props.data ? Math.round((props.data.tip - 1) * 100) : []);
+    const [percentage, setPercentage] = useState(props.data ? Math.round((props.data.tip - 1) * 100) : 10);
 
     const submitHandler = event => {
         event.preventDefault();

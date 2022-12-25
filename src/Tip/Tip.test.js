@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import Tip from './Tip';
 
-it('ItemCollector component', async () => {
+it('Tip component', async () => {
     const user = userEvent.setup();
     render(<Tip />);
 
