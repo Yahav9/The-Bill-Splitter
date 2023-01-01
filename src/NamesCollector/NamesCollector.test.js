@@ -3,65 +3,76 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 import NamesCollector from './NamesCollector';
+import { testData } from '../ItemCollector/ItemCollector.test';
 
-it('NamesCollector component', async () => {
-    const user = userEvent.setup();
-    render(<NamesCollector />);
+let namesList;
+let nextButton;
+let plusButton;
+let nameInput;
 
-    const namesList = screen.getByRole('list');
+function setVariables(data) {
+    render(<NamesCollector data={data} />);
+    namesList = screen.getByRole('list');
+    nextButton = screen.getByRole('button', { name: 'NEXT' });
+    plusButton = screen.getByRole('button', { name: '+' });
+    nameInput = screen.getByPlaceholderText('Name');
+}
+
+function checkExpectations(
+    expectedNamesLength,
+    expectedName,
+    isNextButtonEnabled,
+    isPlusButtonEnabled,
+    expectedInputValue
+) {
     const { queryAllByRole } = within(namesList);
     let names = queryAllByRole('listitem');
-    const nextButton = screen.getByRole('button', { name: 'NEXT' });
-    const plusButton = screen.getByRole('button', { name: '+' });
-    const nameInput = screen.getByPlaceholderText('Name');
+    expect(names.length).toBe(expectedNamesLength);
+    expectedNamesLength > 1 && expect(names[expectedNamesLength - 1]).toHaveTextContent(expectedName);
+    isNextButtonEnabled ? expect(nextButton).toBeEnabled() : expect(nextButton).toBeDisabled();
+    isPlusButtonEnabled ? expect(plusButton).toBeEnabled() : expect(plusButton).toBeDisabled();
+    expect(nameInput.value).toBe(expectedInputValue);
+}
+
+it('NamesCollector component w/o data prop', async () => {
+    const user = userEvent.setup();
+    setVariables();
+
+    const { queryAllByRole } = within(namesList);
+    let names = queryAllByRole('listitem');
 
     // Initial tests.
-    expect(names.length).toBe(0);
-    expect(nextButton).toBeDisabled();
-    expect(plusButton).toBeDisabled();
-    expect(nameInput.value).toBe('');
+    checkExpectations(0, null, false, false, '');
 
     // Test what happens after inserting a value to nameInput.
     await user.type(nameInput, 'רוס');
-    expect(nameInput.value).toBe('רוס');
-    expect(plusButton).toBeEnabled();
-    expect(nextButton).toBeDisabled();
+    checkExpectations(0, null, false, true, 'רוס');
 
     // Test what happens after submitting the form.
     await user.click(plusButton);
-    names = queryAllByRole('listitem');
-    expect(names.length).toBe(1);
-    expect(names[0]).toHaveTextContent('רוס');
-    expect(nextButton).toBeDisabled();
-    expect(plusButton).toBeDisabled();
-    expect(nameInput.value).toBe('');
+    checkExpectations(1, 'רוס', false, false, '');
 
     // Test what happens after inserting a value to nameInput.
     await user.type(nameInput, 'Chandler');
-    expect(nameInput.value).toBe('Chandler');
-    expect(plusButton).toBeEnabled();
-    expect(nextButton).toBeDisabled();
+    checkExpectations(1, 'רוס', false, true, 'Chandler');
 
     // Test what happens after submitting the form.
     await user.click(plusButton);
-    names = queryAllByRole('listitem');
-    expect(names.length).toBe(2);
-    expect(names[1]).toHaveTextContent('Chandler');
-    expect(nextButton).toBeEnabled();
-    expect(plusButton).toBeDisabled();
-    expect(nameInput.value).toBe('');
+    checkExpectations(2, 'Chandler', true, false, '');
+});
 
-    // Test what happens after inserting a value to nameInput.
-    await user.type(nameInput, 'Joey');
-    expect(nameInput.value).toBe('Joey');
-    expect(plusButton).toBeEnabled();
+it('NamesCollector component with data prop', async () => {
+    const user = userEvent.setup();
+    setVariables(testData);
 
-    // Test what happens after submitting the form.
-    await user.click(plusButton);
-    names = queryAllByRole('listitem');
-    expect(names.length).toBe(3);
-    expect(names[2]).toHaveTextContent('Joey');
-    expect(nextButton).toBeEnabled();
-    expect(plusButton).toBeDisabled();
-    expect(nameInput.value).toBe('');
+    // Initial tests.
+    checkExpectations(3, 'Joey', true, false, '');
+
+    const deleteButtons = screen.getAllByRole('button', { name: 'delete' });
+
+    // deleting Joey and Chandler
+    await user.click(deleteButtons[2]);
+    checkExpectations(2, 'Chandler', true, false, '');
+    await user.click(deleteButtons[1]);
+    checkExpectations(1, 'Ross', false, false, '');
 });
