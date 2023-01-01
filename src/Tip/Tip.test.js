@@ -3,10 +3,11 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 import Tip from './Tip';
+import { testData } from '../ItemCollector/ItemCollector.test';
 
-it('Tip component', async () => {
+it('Tip component with data prop', async () => {
     const user = userEvent.setup();
-    render(<Tip />);
+    render(<Tip data={testData} />);
 
     const nextButton = screen.getByRole('button', { name: 'NEXT' });
     const tipInput = screen.getByRole('spinbutton');
