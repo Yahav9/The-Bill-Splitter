@@ -38,9 +38,6 @@ it('NamesCollector component w/o data prop', async () => {
     const user = userEvent.setup();
     setVariables();
 
-    const { queryAllByRole } = within(namesList);
-    let names = queryAllByRole('listitem');
-
     // Initial tests.
     checkExpectations(0, null, false, false, '');
 
