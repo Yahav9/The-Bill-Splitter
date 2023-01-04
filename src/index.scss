@@ -41,3 +41,26 @@ body {
         align-items: center;
     }
 }
+
+@mixin main-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+    width: 100%;
+    max-width: 500px;
+}
+
+@mixin list($flexDirection: column) {
+    list-style: none;
+    display: flex;
+    flex-direction: $flexDirection;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
