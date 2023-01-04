@@ -9,6 +9,7 @@
         align-items: center;
         font-size: 150%;
     }
+
     input {
         @include input($width: 35%, $fontSize: 100%);
         margin: 5px;
