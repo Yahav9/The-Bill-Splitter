@@ -14,7 +14,14 @@ function Conclusion(props) {
                     .reduce((a, b) => Number(a) + Number(b.payment), 0)
                     .toFixed(2)}
             />
-            <Button inverse onClick={() => props.onBackClick()}>BACK</Button>
+            <div className='buttons'>
+                <Button
+                    inverse
+                    onClick={() => props.onBackClick()}
+                >
+                    BACK
+                </Button>
+            </div>
         </div>
     );
 }

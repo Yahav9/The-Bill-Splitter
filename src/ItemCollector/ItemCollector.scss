@@ -12,10 +12,11 @@
 
         .total {
             font-size: 120%;
+            min-width: 250px;
         }
 
-        .next-button {
-            margin-top: 60px;
+        .buttons {
+            @include buttons;
         }
     }
 }

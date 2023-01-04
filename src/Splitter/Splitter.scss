@@ -4,12 +4,7 @@
     @include main-div;
 
     .buttons {
-        width: 90%;
-        font-size: 90%;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        margin-top: 35px;
+        @include buttons;
 
         button {
             width: 45%;

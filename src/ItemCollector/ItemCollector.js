@@ -58,11 +58,15 @@ function ItemCollector(props) {
                     </Card>
                 </li>
                 <ItemForm onAdd={createItem} />
-                <Button
-                    className="next-button"
-                    onClick={nextClickHandler}
-                    disabled={items.length < 1}
-                >NEXT</Button>
+                <div className='buttons'>
+                    <Button
+                        className="next-button"
+                        onClick={nextClickHandler}
+                        disabled={items.length < 1}
+                    >
+                        NEXT
+                    </Button>
+                </div>
             </ul>
         </div>
     );
