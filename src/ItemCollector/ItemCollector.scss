@@ -10,17 +10,10 @@
     .items-list {
         @include list;
 
-        li {
-            font-size: 90%;
-            width: 90%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .total {
-                font-size: 120%;
-            }
+        .total {
+            font-size: 120%;
         }
+
         .next-button {
             margin-top: 60px;
         }

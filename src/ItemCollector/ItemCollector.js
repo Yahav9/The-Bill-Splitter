@@ -40,15 +40,14 @@ function ItemCollector(props) {
                 {
                     items.length > 0 && items.map(item => {
                         return (
-                            <li key={item.index}>
-                                <Item
-                                    name={item.name}
-                                    price={item.price}
-                                    index={item.index}
-                                    onDelete={itemDeleteHandler}
-                                    isItemCollectorPhase
-                                />
-                            </li>
+                            <Item
+                                key={item.index}
+                                name={item.name}
+                                price={item.price}
+                                index={item.index}
+                                onDelete={itemDeleteHandler}
+                                isItemCollectorPhase
+                            />
                         );
                     })
                 }
