@@ -37,7 +37,6 @@ function Splitter(props) {
         if (items.length > itemsIndex + 1) {
             setSplitters([]);
             setItemsIndex(itemsIndex + 1);
-            console.log(people);
         } else {
             const tip = Number(props.data.tip);
             calculatePayment(tip, people);

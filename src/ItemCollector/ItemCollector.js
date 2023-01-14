@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 import './ItemCollector.scss';
 import Item from '../shared/Item/Item';
 import ItemForm from './ItemForm/ItemForm';
 import Card from '../shared/Card/Card';
 import Button from '../shared/Button/Button';
+import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 function ItemCollector(props) {
     const [items, setItems] = useState(props.data ? props.data.items : []);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleFileChange = async event => {
+        setIsLoading(true);
+        const formData = new FormData();
+        formData.append('image', event.target.files[0]);
+        try {
+            const res = await axios.post('http://localhost:5000/process-bill', formData);
+            setItems(res.data);
+            setIsLoading(false);
+        } catch (err) {
+            console.error(err);
+            setIsLoading(false);
+        }
+    };
 
     const createItem = (event, name, price) => {
         event.preventDefault();
@@ -36,9 +53,20 @@ function ItemCollector(props) {
     return (
         <div className="item-collector">
             <h1>Give Me Every Item on the Bill</h1>
+            <form className='file-form'>
+                <label htmlFor='file-input'>Take a picture of the bill</label>
+                <input
+                    id='file-input'
+                    type="file"
+                    onChange={handleFileChange}
+                    accept="image/*"
+                    capture
+                />
+            </form>
             <ul className="items-list">
+                {isLoading && <LoadingSpinner />}
                 {
-                    items.length > 0 && items.map(item => {
+                    !isLoading && items.length > 0 && items.map(item => {
                         return (
                             <Item
                                 key={item.index}

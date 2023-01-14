@@ -7,6 +7,19 @@
         font-size: 130%;
     }
 
+    .file-form {
+        display: flex;
+        flex-direction: column;
+
+        input[type="file"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            visibility: hidden;
+        }
+    }
+
     .items-list {
         @include list;
 
