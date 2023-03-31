@@ -13,23 +13,3 @@ STEP 4 - The app will ask you who is going to pay for each item on the bill (mul
 STEP 5 - The app is going to calculate and show you how much each one of the participants needs to pay.
 
 The app is built with React.js and designed with SCSS.
-
-
-# TheBillSplitter
-
-## Live Version:
-https://thebillsplitter.web.app 
-
-## About the Project:
-
-This is a web app that helps you splitting a bill in a restaurant or a bar between multiple people, in an easy and fun way.
-
-## Why I Chose this Project:
-
-
-
-## Technologies:
-
-- React
-- SCSS
-- Jest
